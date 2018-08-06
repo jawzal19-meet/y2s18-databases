@@ -6,11 +6,11 @@ from sqlalchemy import create_engine
 Base = declarative_base()
 
 class Knowledge(Base):
-   __tablename__ = 'Knowledge'
-   knowledge_id= Column(Integer, primary_key=True)
-   name = Column(String)
-   topic = Column(string)
-   rating = Column(Integer)
+    __tablename__ = 'Knowledge'
+    knowledge_id= Column(Integer, primary_key=True)
+    topic = Column(String)
+    title = Column(String)
+    rating = Column(Integer)
 
 	# Create a table with 4 columns
 	# The first column will be the primary key
@@ -20,11 +20,13 @@ class Knowledge(Base):
 	# topic of the article. The last column will be
 	# an integer, representing your rating of the article.
 
- def __repr__(self):
-       return ("Name: {}\n"
-               "Topic: {} \n"
-               "Rating: {}").format(
-                    self.name, self.topic, self.rating)
+    def __repr__(self):
+    	if slef.rating<7:
+        	return ("If you want to learn about " +self.topic + , you should look at the Wikipedia article called +self.title+  We gave this article a rating of +self.rating)
+        else:
+        	return ("Unfortunately, this article does not have a better rating. Maybe, this is an article that should replaced soon!.")
+    
 
+Knowledge1 = Knowledge(knowledge_id = 1, topic="weather", title="rainbow", rating=9 )
+print(Knowledge1)
 
-	pass
